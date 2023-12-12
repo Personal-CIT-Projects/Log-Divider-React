@@ -1,11 +1,11 @@
-export default function soReviewFormat(nick:string, account:string, eventCount:number, quizCount:number, chatCount:number, playtime:{start: number, end: number, calculated: number}) : string {
+export default function soReviewFormat(nick:string, account:string, eventCount:number, timedOutEventCount:number, quizCount:number, chatCount:number, playtime:{start: number, end: number, calculated: number}) : string {
     let result = `[color=${titleColor(getStrikes(eventCount, quizCount, chatCount, playtime.calculated))}][b][size=14pt]SO Review[/size][/b][/color][hr]`
     result += `\n[b]Nick: [/b]${nick}`
     result += `\n[b]Account: [/b]${account}`
     result += `\n[b]Hours played: [/b](${playtime.end}-${playtime.start})/60= ${playtime.calculated}h`
     result += `\n[b]TC Hits: [/b]${chatCount}`
-    result += `\n[b]Event hits: [/b]${eventCount+quizCount*0.25} (${quizCount} quizzes * 0.25 + ${eventCount} events)`
-    result += `\n[b]Issues: [/b]${getAdvice(eventCount, quizCount, chatCount, playtime.calculated)}`
+    result += `\n[b]Event hits: [/b]${(eventCount-timedOutEventCount)+quizCount*0.25} (${quizCount} quizzes * 0.25 + ${eventCount} events - ${timedOutEventCount} t/o events)`
+    result += `\n[b]Issues: [/b]${getAdvice(eventCount-timedOutEventCount, quizCount, chatCount, playtime.calculated)}`
 
     return result
 }

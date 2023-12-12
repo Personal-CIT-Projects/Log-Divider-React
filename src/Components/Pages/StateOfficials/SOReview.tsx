@@ -12,7 +12,7 @@ export default function SOReview() {
     const [preferClipboard, setPreferClipboard] = useState(true)
     const divider = useDivider()
     const clipboard = useClipboard()
-    const format = soReviewFormat(divider.getNick(), divider.getAccount(), divider.events.length, divider.quizzes.length, divider.team.length, divider.getPlaytime())
+    const format = soReviewFormat(divider.getNick(), divider.getAccount(), divider.events.length, divider.timedOutEvents.length, divider.quizzes.length, divider.team.length, divider.getPlaytime())
 
     if (divider.loading) return <>Loading...</>
 

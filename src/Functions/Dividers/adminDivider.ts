@@ -102,7 +102,7 @@ function assignLine(line:string,month:string = "") {
     if(line.includes(" (AA)(CONTACTADMIN) ")) tempCad.push(line)
     if(line.includes(" (AA)(SUPPORT) ")) tempSup.push(line)
 
-    if(line.includes(" opened '") && line.includes(" ms")) tempLogsFetched.push(line)
+    if(line.includes(" opened '") && line.includes("ms reason:")) tempLogsFetched.push(line)
     if(line.includes(" [CM] ") && line.includes(" set ")) tempCm.push(line)
 
     if(line.includes("warped to ")) {

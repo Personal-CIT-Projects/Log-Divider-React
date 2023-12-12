@@ -11,6 +11,7 @@ let tempLogin : string[] = []
 let tempLoginMisc : string[] = []
 let tempQuitMisc : string[] = []
 let tempEvents : string[] = []
+let tempToEvents : string[] = []
 let tempTeam : string[] = []
 let tempQuizzes : string[] = []
 
@@ -22,6 +23,7 @@ export function useDivider() {
     const [login, setLogin] = useState<string[]>([])
     const [quitMisc, setQuitMisc] = useState<string[]>([])
     const [events, setEvents] = useState<string[]>([])
+    const [toEvents, setToEvents] = useState<string[]>([])
 
     function execute(input : string, month : string = "") {
         setLoading(true)
@@ -36,6 +38,7 @@ export function useDivider() {
         setLoginMisc(tempLoginMisc)
         setLogin(tempLogin)
         setQuitMisc(tempQuitMisc)
+        setToEvents(tempToEvents)
         setLoading(false)
     }
 
@@ -60,7 +63,7 @@ export function useDivider() {
         return getAccountFromArray(login)
     }
 
-    return {execute, loading, quizzes, team, events, allActivities, getPlaytime, getNick, getAccount}
+    return {execute, loading, quizzes, team, events, allActivities, getPlaytime, getNick, getAccount, timedOutEvents: toEvents}
 }
 
 function assignLine(line:string, month : string = "") {
@@ -71,6 +74,7 @@ function assignLine(line:string, month : string = "") {
     if(line.includes(" QUIT MISC: ")) tempQuitMisc.push(line)
     if(line.includes("TC: [Civilian Workers]")) tempTeam.push(line)
     if(line.includes(" Hosted Civilian event; ")) tempEvents.push(line)
+    if(line.includes("' timed out. Nobody won the event!")) tempToEvents.push(line)
     if(line.includes(" created event '")) tempEvents.push(line)
     if(line.includes(" created a quiz of '")) tempQuizzes.push(line)
 }
@@ -81,5 +85,6 @@ function resetArrays() {
     tempQuitMisc = []
     tempQuizzes = []
     tempEvents = []
+    tempToEvents = []
     tempTeam = []
 }
