@@ -13,6 +13,7 @@ export default function Home() {
             Hey, a kind message from Ptole! 
             If you're still using this tool and are need some updates to this project then feel free to contact me! 
             Pick your channel, I am regularly checking the <a href="https://cit.gg/index.php?action=pm;sa=send;u=41102;">forum</a> and you can also message me on discord (sanderc).
+            <br/> 
             Don't forget to not leak anything though, I am not a staff member anymore. 😉
         </p>
     </div>
